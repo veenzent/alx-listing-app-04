@@ -1,13 +1,21 @@
 import Image from "next/image";
 
-interface CardProps {
+interface Property {
+  id?: string | number;
   name: string;
   image: string;
   price: number;
-  rating: number;
+  rating?: number;
+  [key: string]: any;
 }
 
-export default function PropertyCard({ name, image, price, rating }: CardProps) {
+interface Props {
+  property: Property;
+}
+
+export default function PropertyCard({ property }: Props) {
+  const { name = "Unknown", image = "/assets/Image 1.png", price = 0, rating = 0 } = property;
+
   return (
     <div className="rounded-xl overflow-hidden shadow hover:shadow-md transition">
       <div className="relative w-full h-48">
